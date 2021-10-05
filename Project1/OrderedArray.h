@@ -5,7 +5,7 @@ template<class T>
 class OrderedArray : public BaseArray<T>
 {
 public:
-	OrderedArray(int size, int growBy = 1) : BaseArray<T>(size, growBy)
+	OrderedArray(int size) : BaseArray<T>(size)
 	{
 
 	}

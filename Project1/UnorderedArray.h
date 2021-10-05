@@ -6,7 +6,7 @@ template <class T>
 class UnorderedArray : public BaseArray<T>
 {
 public:
-	UnorderedArray(int size, int growBy = 1) : BaseArray<T>(size, growBy)
+	UnorderedArray(int size) : BaseArray<T>(size)
 	{
 
 	}

@@ -16,6 +16,7 @@ int main()
 	array.push(23); // <-- Should expand here			// 3 23 82
 	array.push(82); // <-- Should expand here
 
+	cout << array.GetSize();
 	array[2] = 112;
 
 	array.pop();

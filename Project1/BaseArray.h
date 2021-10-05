@@ -6,8 +6,8 @@ class BaseArray
 {
 public:
 	// Constructor
-	BaseArray(int size, int growBy = 1) :
-		m_array(NULL), m_maxSize(0), m_growSize(0), m_numElements(0)
+	BaseArray(int size) :
+		m_array(NULL), m_maxSize(0), m_growSize(2), m_numElements(0)
 	{
 		if (size)	// Is this a legal size for an array?
 		{
@@ -15,7 +15,8 @@ public:
 			m_array = new T[m_maxSize];		// Dynamically allocating an array to m_maxSize
 			memset(m_array, 0, sizeof(T) * m_maxSize);	// Explicitly set 0 to all elements in the array
 
-			m_growSize = ((growBy > 0) ? growBy : 0);
+			// we don't need
+			//m_growSize = ((growBy > 0) ? growBy : 0);
 		}
 	}
 
@@ -94,11 +95,12 @@ public:
 	{
 		return m_growSize;
 	}
-	int SetGrowSize(int val)
+	// grow size will grow 2 4 8 16 ...
+	/*int SetGrowSize(int val)
 	{
 		assert(val >= 0);
 		m_growSize = val;
-	}
+	}*/
 protected:
 	// protected functions
 		// Expansion
@@ -114,6 +116,7 @@ protected:
 		T* temp = new T[m_maxSize + m_growSize];
 		assert(temp != nullptr);
 
+
 		// Copy the contents of the original array into the new array
 		memcpy(temp, m_array, sizeof(T) * m_maxSize);
 
@@ -125,6 +128,9 @@ protected:
 		temp = nullptr;
 
 		m_maxSize += m_growSize;
+
+		// lastly, grow size 2, 4, 8, 16 ...
+		m_growSize = m_growSize << 1;
 
 		return true;
 	}
