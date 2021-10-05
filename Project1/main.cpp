@@ -21,6 +21,8 @@ int main()
 	array.push(54); // <-- Should expand here
 	cout << "GrowSize = " << array.GetGrowSize() << std::endl;
 	array.push(47);
+	array.push(54);
+
 
 
 	array[2] = 112;

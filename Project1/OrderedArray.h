@@ -5,7 +5,7 @@ template<class T>
 class OrderedArray : public BaseArray<T>
 {
 public:
-	OrderedArray(int size) : BaseArray<T>(size)
+	OrderedArray(int size, bool isDuplicateValid = false ) : BaseArray<T>(size), m_isDuplicateValid(isDuplicateValid)
 	{
 
 	}
@@ -17,6 +17,17 @@ public:
 	void push(T val) override
 	{
 		assert(this->m_array != nullptr);
+
+		//preventing duplicate data
+		if(!m_isDuplicateValid)
+		{
+			if (search(val) != -1)
+			{
+				std::cout << "This data is already in the array!!" << std::endl;
+				return;
+			}
+		}
+
 
 		if (this->m_numElements >= this->m_maxSize)
 		{
@@ -85,4 +96,7 @@ public:
 
 		return -1;	// Catch all return from danger.
 	}
+
+private:
+	bool m_isDuplicateValid;
 };
