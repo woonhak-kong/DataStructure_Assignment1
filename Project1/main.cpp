@@ -10,13 +10,19 @@ int main()
 
 	OrderedArray<int> array(3);
 
+	cout << "GrowSize = " << array.GetGrowSize() << std::endl;
 	array.push(3);
 	array.push(53);
 	array.push(83);
 	array.push(23); // <-- Should expand here			// 3 23 82
-	array.push(82); // <-- Should expand here
+	cout << "GrowSize = " << array.GetGrowSize() << std::endl;
+	array.push(40);
+	array.push(22);
+	array.push(54); // <-- Should expand here
+	cout << "GrowSize = " << array.GetGrowSize() << std::endl;
+	array.push(47);
 
-	cout << array.GetSize();
+
 	array[2] = 112;
 
 	array.pop();
@@ -37,15 +43,17 @@ int main()
 	cout << endl << endl;
 
 
-	UnorderedArray<int> uArray(30);
-
+	UnorderedArray<int> uArray(3);
+	cout << "GrowSize = " << uArray.GetGrowSize() << std::endl;
 	uArray.push(10);
 	uArray.push(12);
 	uArray.push(1);
 	uArray.push(6);
+	cout << "GrowSize = " << uArray.GetGrowSize() << std::endl;
 	uArray.push(46);
 	uArray.push(30);
 	uArray.push(100);
+	cout << "GrowSize = " << uArray.GetGrowSize() << std::endl;
 	uArray.push(50);
 	uArray.push(10);
 
